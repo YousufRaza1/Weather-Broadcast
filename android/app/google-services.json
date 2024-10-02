@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "8695217320",
+    "project_id": "weather-track-c9dae",
+    "storage_bucket": "weather-track-c9dae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8695217320:android:d5d0def4724d5a90c4169d",
+        "android_client_info": {
+          "package_name": "com.example.weather_track"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIVNc4sUSrzBmgnGoQSroNYyEhAtynVVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
