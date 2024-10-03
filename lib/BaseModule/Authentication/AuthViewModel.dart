@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../MainWeatherScreen/WeatherMainScreen.dart';
 import '/BaseModule/Authentication/SignUpScreen.dart';
 import 'forget_password_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -52,7 +53,7 @@ class AuthService {
       if (credential.user != null) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Homescreen()), // Replace with your target screen
+          MaterialPageRoute(builder: (context) => WeatherScreen()), // Replace with your target screen
         );
       }
 
