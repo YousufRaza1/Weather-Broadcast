@@ -227,3 +227,355 @@ class Wind {
     "deg": deg,
   };
 }
+
+
+
+class WeatherForThreeHour {
+  String? cod;
+  int? message;
+  int? cnt;
+  List<ListElementForThreeHour>? list;
+  CityForThreeHour? city;
+
+  WeatherForThreeHour({
+    this.cod,
+    this.message,
+    this.cnt,
+    this.list,
+    this.city,
+  });
+
+  factory WeatherForThreeHour.fromRawJson(String str) =>
+      WeatherForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory WeatherForThreeHour.fromJson(Map<String, dynamic> json) => WeatherForThreeHour(
+    cod: json["cod"],
+    message: json["message"],
+    cnt: json["cnt"],
+    list: json["list"] == null
+        ? null
+        : List<ListElementForThreeHour>.from(json["list"].map((x) => ListElementForThreeHour.fromJson(x))),
+    city: json["city"] == null ? null : CityForThreeHour.fromJson(json["city"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "cod": cod,
+    "message": message,
+    "cnt": cnt,
+    "list": list == null ? null : List<dynamic>.from(list!.map((x) => x.toJson())),
+    "city": city?.toJson(),
+  };
+}
+
+class CityForThreeHour {
+  int? id;
+  String? name;
+  CoordForThreeHour? coord;
+  String? country;
+  int? population;
+  int? timezone;
+  int? sunrise;
+  int? sunset;
+
+  CityForThreeHour({
+    this.id,
+    this.name,
+    this.coord,
+    this.country,
+    this.population,
+    this.timezone,
+    this.sunrise,
+    this.sunset,
+  });
+
+  factory CityForThreeHour.fromRawJson(String str) =>
+      CityForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory CityForThreeHour.fromJson(Map<String, dynamic> json) => CityForThreeHour(
+    id: json["id"],
+    name: json["name"],
+    coord: json["coord"] == null ? null : CoordForThreeHour.fromJson(json["coord"]),
+    country: json["country"],
+    population: json["population"],
+    timezone: json["timezone"],
+    sunrise: json["sunrise"],
+    sunset: json["sunset"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "coord": coord?.toJson(),
+    "country": country,
+    "population": population,
+    "timezone": timezone,
+    "sunrise": sunrise,
+    "sunset": sunset,
+  };
+}
+
+class CoordForThreeHour {
+  double? lat;
+  double? lon;
+
+  CoordForThreeHour({
+    this.lat,
+    this.lon,
+  });
+
+  factory CoordForThreeHour.fromRawJson(String str) =>
+      CoordForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory CoordForThreeHour.fromJson(Map<String, dynamic> json) => CoordForThreeHour(
+    lat: json["lat"]?.toDouble(),
+    lon: json["lon"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "lat": lat,
+    "lon": lon,
+  };
+}
+
+class ListElementForThreeHour {
+  int? dt;
+  MainForThreeHour? main;
+  List<WeatherForThreeHourElement>? weather;
+  CloudsForThreeHour? clouds;
+  WindForThreeHour? wind;
+  int? visibility;
+  double? pop;
+  RainForThreeHour? rain;
+  SysForThreeHour? sys;
+  DateTime? dtTxt;
+
+  ListElementForThreeHour({
+    this.dt,
+    this.main,
+    this.weather,
+    this.clouds,
+    this.wind,
+    this.visibility,
+    this.pop,
+    this.rain,
+    this.sys,
+    this.dtTxt,
+  });
+
+  factory ListElementForThreeHour.fromRawJson(String str) =>
+      ListElementForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory ListElementForThreeHour.fromJson(Map<String, dynamic> json) => ListElementForThreeHour(
+    dt: json["dt"],
+    main: json["main"] == null ? null : MainForThreeHour.fromJson(json["main"]),
+    weather: json["weather"] == null
+        ? null
+        : List<WeatherForThreeHourElement>.from(json["weather"].map((x) => WeatherForThreeHourElement.fromJson(x))),
+    clouds: json["clouds"] == null ? null : CloudsForThreeHour.fromJson(json["clouds"]),
+    wind: json["wind"] == null ? null : WindForThreeHour.fromJson(json["wind"]),
+    visibility: json["visibility"],
+    pop: json["pop"]?.toDouble(),
+    rain: json["rain"] == null ? null : RainForThreeHour.fromJson(json["rain"]),
+    sys: json["sys"] == null ? null : SysForThreeHour.fromJson(json["sys"]),
+    dtTxt: json["dt_txt"] == null ? null : DateTime.parse(json["dt_txt"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "dt": dt,
+    "main": main?.toJson(),
+    "weather": weather == null ? null : List<dynamic>.from(weather!.map((x) => x.toJson())),
+    "clouds": clouds?.toJson(),
+    "wind": wind?.toJson(),
+    "visibility": visibility,
+    "pop": pop,
+    "rain": rain?.toJson(),
+    "sys": sys?.toJson(),
+    "dt_txt": dtTxt?.toIso8601String(),
+  };
+}
+
+class CloudsForThreeHour {
+  int? all;
+
+  CloudsForThreeHour({
+    this.all,
+  });
+
+  factory CloudsForThreeHour.fromRawJson(String str) =>
+      CloudsForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory CloudsForThreeHour.fromJson(Map<String, dynamic> json) => CloudsForThreeHour(
+    all: json["all"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "all": all,
+  };
+}
+
+class MainForThreeHour {
+  double? temp;
+  double? feelsLike;
+  double? tempMin;
+  double? tempMax;
+  int? pressure;
+  int? seaLevel;
+  int? grndLevel;
+  int? humidity;
+  double? tempKf;
+
+  MainForThreeHour({
+    this.temp,
+    this.feelsLike,
+    this.tempMin,
+    this.tempMax,
+    this.pressure,
+    this.seaLevel,
+    this.grndLevel,
+    this.humidity,
+    this.tempKf,
+  });
+
+  factory MainForThreeHour.fromRawJson(String str) =>
+      MainForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory MainForThreeHour.fromJson(Map<String, dynamic> json) => MainForThreeHour(
+    temp: json["temp"]?.toDouble(),
+    feelsLike: json["feels_like"]?.toDouble(),
+    tempMin: json["temp_min"]?.toDouble(),
+    tempMax: json["temp_max"]?.toDouble(),
+    pressure: json["pressure"],
+    seaLevel: json["sea_level"],
+    grndLevel: json["grnd_level"],
+    humidity: json["humidity"],
+    tempKf: json["temp_kf"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "temp": temp,
+    "feels_like": feelsLike,
+    "temp_min": tempMin,
+    "temp_max": tempMax,
+    "pressure": pressure,
+    "sea_level": seaLevel,
+    "grnd_level": grndLevel,
+    "humidity": humidity,
+    "temp_kf": tempKf,
+  };
+}
+
+class RainForThreeHour {
+  double? the3H;
+
+  RainForThreeHour({
+    this.the3H,
+  });
+
+  factory RainForThreeHour.fromRawJson(String str) =>
+      RainForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory RainForThreeHour.fromJson(Map<String, dynamic> json) => RainForThreeHour(
+    the3H: json["3h"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "3h": the3H,
+  };
+}
+
+class SysForThreeHour {
+  String? pod;
+
+  SysForThreeHour({
+    this.pod,
+  });
+
+  factory SysForThreeHour.fromRawJson(String str) =>
+      SysForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory SysForThreeHour.fromJson(Map<String, dynamic> json) => SysForThreeHour(
+    pod: json["pod"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "pod": pod,
+  };
+}
+
+class WeatherForThreeHourElement {
+  int? id;
+  String? main;
+  String? description;
+  String? icon;
+
+  WeatherForThreeHourElement({
+    this.id,
+    this.main,
+    this.description,
+    this.icon,
+  });
+
+  factory WeatherForThreeHourElement.fromRawJson(String str) =>
+      WeatherForThreeHourElement.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory WeatherForThreeHourElement.fromJson(Map<String, dynamic> json) => WeatherForThreeHourElement(
+    id: json["id"],
+    main: json["main"],
+    description: json["description"],
+    icon: json["icon"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "main": main,
+    "description": description,
+    "icon": icon,
+  };
+}
+
+class WindForThreeHour {
+  double? speed;
+  int? deg;
+  double? gust;
+
+  WindForThreeHour({
+    this.speed,
+    this.deg,
+    this.gust,
+  });
+
+  factory WindForThreeHour.fromRawJson(String str) =>
+      WindForThreeHour.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory WindForThreeHour.fromJson(Map<String, dynamic> json) => WindForThreeHour(
+    speed: json["speed"]?.toDouble(),
+    deg: json["deg"],
+    gust: json["gust"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "speed": speed,
+    "deg": deg,
+    "gust": gust,
+  };
+}
