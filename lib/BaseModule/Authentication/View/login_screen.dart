@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '/BaseModule/Authentication/SignUpScreen.dart';
+import 'SignUpScreen.dart';
 import 'forget_password_screen.dart';
-import 'AuthViewModel.dart';
+import '../ViewModel/AuthViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:weather_broadcast/BaseModule/Authentication/SignUpScreen.dart';
+import 'reset_password_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
+
 
   final AuthViewModel = AuthService();
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -211,11 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Spacer(),
                 TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ForgetPasswordScreen()),
-                      );
+                      displayTextInputDialog(context);
                     },
                     child: Text(
                       'Forgot password',

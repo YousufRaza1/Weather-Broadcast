@@ -2,9 +2,9 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'WeatherModel.dart';
+import '../Model/WeatherModel.dart';
 import 'package:intl/intl.dart';
-import 'CityWeatherModel.dart';
+import '../Model/CityWeatherModel.dart';
 
 class WeatherViewModel {
 

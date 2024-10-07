@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'WeatherModel.dart'; // Assuming your model is here
-import 'WeatherScreenViewModel.dart';
+import '../Model/WeatherModel.dart'; // Assuming your model is here
+import '../ViewModel/WeatherScreenViewModel.dart';
 import 'SearchListScreen.dart';
-import 'CityWeatherModel.dart';
+import '../Model/CityWeatherModel.dart';
 
 class WeatherScreen extends StatefulWidget {
   @override
@@ -14,6 +14,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   late Future<HourlyWelcome?> hourlyWeather;
   final viewModel = WeatherViewModel();
   String currentCity = 'Dhaka';
+  String savedDate = "";
 
   void _updateCityName(String newValue) {
     setState(() {
@@ -164,12 +165,26 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         (index) {
                           List<String> formatted = viewModel.formatDateTime(
                               hourlyWeather[index].dtTxt.toString());
+                          final leargePaddign = formatted[1] != savedDate ? true: false;
+                          savedDate = formatted[1];
+
                           return Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              leargePaddign ?  index == 0 ? SizedBox(height:0) : SizedBox(height:40): SizedBox(height:10),
+                              leargePaddign ?
+                              Row(
+                                children: [
+                                  Text('${formatted[1]}'),
+                                  Spacer()
+                                ],
+                              )
+                                  :
+                              SizedBox.shrink(),
                               Container(
                                 padding: EdgeInsets.only(
                                     left: 8, right: 8, top: 16, bottom: 16),
-                                height: 80,
+                                height: 87,
                                 width: double.infinity,
 
                                 decoration: BoxDecoration(
@@ -181,15 +196,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     Column(
                                       children: [
                                         Text(formatted[0]),
-                                        SizedBox(height: 8),
-                                        Text(formatted[1])
+                                        Image.network(
+                                          'https://openweathermap.org/img/wn/${hourlyWeather[index].weather![0].icon}@4x.png',
+                                          width: 40,
+                                          height: 35,
+                                        ),
                                       ],
                                     ),
-                                    Image.network(
-                                      'https://openweathermap.org/img/wn/${hourlyWeather[index].weather![0].icon}@4x.png',
-                                      width: 50,
-                                      height: 50,
-                                    ),
+                                    SizedBox(width: 20),
+
                                     Column(
                                       children: [
                                         Text(
@@ -222,9 +237,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 10)
+
                             ],
                           );
+
                         },
                       ),
                     ),

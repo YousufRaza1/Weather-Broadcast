@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:weather_track/BaseModule/MainWeatherScreen/SearchListViewModel.dart';
+import 'package:weather_track/BaseModule/MainWeatherScreen/ViewModel/SearchListViewModel.dart';
 class SearchListScreen extends StatefulWidget {
   final ValueChanged<String> onUpdate;
   SearchListScreen({ required this.onUpdate});

@@ -1,18 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../MainWeatherScreen/WeatherMainScreen.dart';
-import '/BaseModule/Authentication/SignUpScreen.dart';
-import 'forget_password_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'HomeScreen.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import '../../MainWeatherScreen/View/WeatherMainScreen.dart';
+import '../View/HomeScreen.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> signInWithGoogle(BuildContext context) async {
+  Future<void> resetPassword(String email, BuildContext context) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      print('success');
+    } catch (e) {
+      print('fail');
+    }
+  }
 
+  Future<void> signInWithGoogle(BuildContext context) async {
     GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
     if (gUser == null) return;
     GoogleSignInAuthentication gAuth = await gUser!.authentication;
@@ -25,7 +29,7 @@ class AuthService {
         context,
         MaterialPageRoute(
             builder: (context) =>
-                WeatherScreen()), // Replace with your target screen
+                HomeScreen()), // Replace with your target screen
       );
     }
   }
@@ -47,7 +51,7 @@ class AuthService {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  Homescreen()), // Replace with your target screen
+                  HomeScreen()), // Replace with your target screen
         );
       }
     } on FirebaseAuthException catch (e) {
@@ -75,7 +79,7 @@ class AuthService {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  WeatherScreen()), // Replace with your target screen
+                  HomeScreen()), // Replace with your target screen
         );
       }
     } on FirebaseAuthException catch (e) {
