@@ -323,6 +323,7 @@ class SocialMediaLoginSection extends StatefulWidget {
 }
 
 class _SocialMediaLoginSectionState extends State<SocialMediaLoginSection> {
+  final AuthViewModel = AuthService();
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -335,7 +336,8 @@ class _SocialMediaLoginSectionState extends State<SocialMediaLoginSection> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              print('tap on $index');
+              print('tap on ${index}');
+              AuthViewModel.signInWithGoogle(context);
             },
             child: Container(
               height: 50,

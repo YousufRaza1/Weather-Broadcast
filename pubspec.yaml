@@ -16,6 +16,8 @@ dependencies:
   cloud_firestore: ^5.4.3
   http: ^1.2.2
   easy_search_bar: ^2.5.0
+  google_sign_in: ^6.2.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -28,3 +30,4 @@ flutter:
     - assets/star 8.png
     - assets/star 8@2x.png
     - assets/star 8@3x.png
+    - assets/img.png

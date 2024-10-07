@@ -579,3 +579,340 @@ class WindForThreeHour {
     "gust": gust,
   };
 }
+
+
+class HourlyWelcome {
+  String? cod;
+  int? message;
+  int? cnt;
+  List<HourlyListElement>? list;
+  HourlyCity? city;
+
+  HourlyWelcome({
+    this.cod,
+    this.message,
+    this.cnt,
+    this.list,
+    this.city,
+  });
+
+  factory HourlyWelcome.fromRawJson(String str) => HourlyWelcome.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyWelcome.fromJson(Map<String, dynamic> json) => HourlyWelcome(
+    cod: json["cod"],
+    message: json["message"],
+    cnt: json["cnt"],
+    list: json["list"] == null ? [] : List<HourlyListElement>.from(json["list"]!.map((x) => HourlyListElement.fromJson(x))),
+    city: json["city"] == null ? null : HourlyCity.fromJson(json["city"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "cod": cod,
+    "message": message,
+    "cnt": cnt,
+    "list": list == null ? [] : List<dynamic>.from(list!.map((x) => x.toJson())),
+    "city": city?.toJson(),
+  };
+}
+
+class HourlyCity {
+  int? id;
+  String? name;
+  HourlyCoord? coord;
+  String? country;
+  int? population;
+  int? timezone;
+  int? sunrise;
+  int? sunset;
+
+  HourlyCity({
+    this.id,
+    this.name,
+    this.coord,
+    this.country,
+    this.population,
+    this.timezone,
+    this.sunrise,
+    this.sunset,
+  });
+
+  factory HourlyCity.fromRawJson(String str) => HourlyCity.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyCity.fromJson(Map<String, dynamic> json) => HourlyCity(
+    id: json["id"],
+    name: json["name"],
+    coord: json["coord"] == null ? null : HourlyCoord.fromJson(json["coord"]),
+    country: json["country"],
+    population: json["population"],
+    timezone: json["timezone"],
+    sunrise: json["sunrise"],
+    sunset: json["sunset"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "coord": coord?.toJson(),
+    "country": country,
+    "population": population,
+    "timezone": timezone,
+    "sunrise": sunrise,
+    "sunset": sunset,
+  };
+}
+
+class HourlyCoord {
+  double? lat;
+  double? lon;
+
+  HourlyCoord({
+    this.lat,
+    this.lon,
+  });
+
+  factory HourlyCoord.fromRawJson(String str) => HourlyCoord.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyCoord.fromJson(Map<String, dynamic> json) => HourlyCoord(
+    lat: json["lat"]?.toDouble(),
+    lon: json["lon"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "lat": lat,
+    "lon": lon,
+  };
+}
+
+class HourlyListElement {
+  int? dt;
+  HourlyMain? main;
+  List<HourlyWeather>? weather;
+  HourlyClouds? clouds;
+  HourlyWind? wind;
+  int? visibility;
+  double? pop;
+  HourlyRain? rain;
+  HourlySys? sys;
+  DateTime? dtTxt;
+
+  HourlyListElement({
+    this.dt,
+    this.main,
+    this.weather,
+    this.clouds,
+    this.wind,
+    this.visibility,
+    this.pop,
+    this.rain,
+    this.sys,
+    this.dtTxt,
+  });
+
+  factory HourlyListElement.fromRawJson(String str) => HourlyListElement.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyListElement.fromJson(Map<String, dynamic> json) => HourlyListElement(
+    dt: json["dt"],
+    main: json["main"] == null ? null : HourlyMain.fromJson(json["main"]),
+    weather: json["weather"] == null ? [] : List<HourlyWeather>.from(json["weather"]!.map((x) => HourlyWeather.fromJson(x))),
+    clouds: json["clouds"] == null ? null : HourlyClouds.fromJson(json["clouds"]),
+    wind: json["wind"] == null ? null : HourlyWind.fromJson(json["wind"]),
+    visibility: json["visibility"],
+    pop: json["pop"]?.toDouble(),
+    rain: json["rain"] == null ? null : HourlyRain.fromJson(json["rain"]),
+    sys: json["sys"] == null ? null : HourlySys.fromJson(json["sys"]),
+    dtTxt: json["dt_txt"] == null ? null : DateTime.parse(json["dt_txt"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "dt": dt,
+    "main": main?.toJson(),
+    "weather": weather == null ? [] : List<dynamic>.from(weather!.map((x) => x.toJson())),
+    "clouds": clouds?.toJson(),
+    "wind": wind?.toJson(),
+    "visibility": visibility,
+    "pop": pop,
+    "rain": rain?.toJson(),
+    "sys": sys?.toJson(),
+    "dt_txt": dtTxt?.toIso8601String(),
+  };
+}
+
+class HourlyClouds {
+  int? all;
+
+  HourlyClouds({
+    this.all,
+  });
+
+  factory HourlyClouds.fromRawJson(String str) => HourlyClouds.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyClouds.fromJson(Map<String, dynamic> json) => HourlyClouds(
+    all: json["all"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "all": all,
+  };
+}
+
+class HourlyMain {
+  double? temp;
+  double? feelsLike;
+  double? tempMin;
+  double? tempMax;
+  int? pressure;
+  int? seaLevel;
+  int? grndLevel;
+  int? humidity;
+  double? tempKf;
+
+  HourlyMain({
+    this.temp,
+    this.feelsLike,
+    this.tempMin,
+    this.tempMax,
+    this.pressure,
+    this.seaLevel,
+    this.grndLevel,
+    this.humidity,
+    this.tempKf,
+  });
+
+  factory HourlyMain.fromRawJson(String str) => HourlyMain.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyMain.fromJson(Map<String, dynamic> json) => HourlyMain(
+    temp: json["temp"]?.toDouble(),
+    feelsLike: json["feels_like"]?.toDouble(),
+    tempMin: json["temp_min"]?.toDouble(),
+    tempMax: json["temp_max"]?.toDouble(),
+    pressure: json["pressure"],
+    seaLevel: json["sea_level"],
+    grndLevel: json["grnd_level"],
+    humidity: json["humidity"],
+    tempKf: json["temp_kf"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "temp": temp,
+    "feels_like": feelsLike,
+    "temp_min": tempMin,
+    "temp_max": tempMax,
+    "pressure": pressure,
+    "sea_level": seaLevel,
+    "grnd_level": grndLevel,
+    "humidity": humidity,
+    "temp_kf": tempKf,
+  };
+}
+
+class HourlyRain {
+  double? the3H;
+
+  HourlyRain({
+    this.the3H,
+  });
+
+  factory HourlyRain.fromRawJson(String str) => HourlyRain.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyRain.fromJson(Map<String, dynamic> json) => HourlyRain(
+    the3H: json["3h"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "3h": the3H,
+  };
+}
+
+class HourlySys {
+  String? pod;
+
+  HourlySys({
+    this.pod,
+  });
+
+  factory HourlySys.fromRawJson(String str) => HourlySys.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlySys.fromJson(Map<String, dynamic> json) => HourlySys(
+    pod: json["pod"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "pod": pod,
+  };
+}
+
+class HourlyWeather {
+  int? id;
+  String? main;
+  String? description;
+  String? icon;
+
+  HourlyWeather({
+    this.id,
+    this.main,
+    this.description,
+    this.icon,
+  });
+
+  factory HourlyWeather.fromRawJson(String str) => HourlyWeather.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyWeather.fromJson(Map<String, dynamic> json) => HourlyWeather(
+    id: json["id"],
+    main: json["main"],
+    description: json["description"],
+    icon: json["icon"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "main": main,
+    "description": description,
+    "icon": icon,
+  };
+}
+
+class HourlyWind {
+  double? speed;
+  int? deg;
+  double? gust;
+
+  HourlyWind({
+    this.speed,
+    this.deg,
+    this.gust,
+  });
+
+  factory HourlyWind.fromRawJson(String str) => HourlyWind.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory HourlyWind.fromJson(Map<String, dynamic> json) => HourlyWind(
+    speed: json["speed"]?.toDouble(),
+    deg: json["deg"],
+    gust: json["gust"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "speed": speed,
+    "deg": deg,
+    "gust": gust,
+  };
+}

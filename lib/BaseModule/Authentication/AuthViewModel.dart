@@ -1,16 +1,37 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../MainWeatherScreen/WeatherMainScreen.dart';
 import '/BaseModule/Authentication/SignUpScreen.dart';
 import 'forget_password_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'HomeScreen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  Future<void> signInWithGoogle(BuildContext context) async {
 
-  Future<void> createUserWithEmailAndPassword(String email, String pass, BuildContext context) async {
+    GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+    if (gUser == null) return;
+    GoogleSignInAuthentication gAuth = await gUser!.authentication;
+    final cradential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken, idToken: gAuth.idToken);
+
+    final userCradential = await _auth.signInWithCredential(cradential);
+    if (userCradential != null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                WeatherScreen()), // Replace with your target screen
+      );
+    }
+  }
+
+  Future<void> createUserWithEmailAndPassword(
+      String email, String pass, BuildContext context) async {
     try {
       print('started');
       final credential = await _auth.createUserWithEmailAndPassword(
@@ -24,7 +45,9 @@ class AuthService {
       if (credential.user != null) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Homescreen()), // Replace with your target screen
+          MaterialPageRoute(
+              builder: (context) =>
+                  Homescreen()), // Replace with your target screen
         );
       }
     } on FirebaseAuthException catch (e) {
@@ -38,11 +61,8 @@ class AuthService {
     }
   }
 
-
-
-
-
-  Future<void> signInWithEmailAndPassword(String email, String password, BuildContext context) async {
+  Future<void> signInWithEmailAndPassword(
+      String email, String password, BuildContext context) async {
     try {
       final credential = await _auth.signInWithEmailAndPassword(
         email: email,
@@ -53,10 +73,11 @@ class AuthService {
       if (credential.user != null) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => WeatherScreen()), // Replace with your target screen
+          MaterialPageRoute(
+              builder: (context) =>
+                  WeatherScreen()), // Replace with your target screen
         );
       }
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -71,5 +92,4 @@ class AuthService {
       print(e);
     }
   }
-
 }
