@@ -29,7 +29,7 @@ Weather Track is a Flutter-based mobile application designed to provide real-tim
 ## Screenshots
 
 <!-- Add screenshots or UI previews once available -->
-![image](/Screenshots/image (7).jpeg)
+![image](Screenshots/Image%20(7).jpeg)
 
 ## Getting Started
 
