@@ -34,8 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.lock),
-            label: 'Forget Password',
+            icon: Icon(Icons.map),
+            label: 'Maps',
           ),
         ],
         currentIndex: _currentIndex,
@@ -66,7 +66,7 @@ class ForgetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Forget Password Screen',
+        'Comimg soon',
         style: TextStyle(fontSize: 24),
       ),
     );
