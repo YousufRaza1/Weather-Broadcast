@@ -50,5 +50,5 @@ Weather Track is a Flutter-based mobile application designed to provide real-tim
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/weather_track.git
+   git clone https://github.com/YousufRaza1/Weather-Broadcast
 
