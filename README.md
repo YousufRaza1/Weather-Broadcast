@@ -1,16 +1,44 @@
-# weather_track
+# Weather Track
 
-A new Flutter project.
+Weather Track is a Flutter-based mobile application designed to provide real-time weather updates, including both current weather and hourly forecasts for selected locations.
+
+## Features
+
+- **Current Weather:** Displays real-time weather data, including temperature, humidity, wind speed, and more.
+- **Hourly Forecast:** Provides weather forecast for the upcoming hours.
+- **Multiple Locations:** Track weather for different locations by entering a city or using GPS-based location detection.
+- **User-friendly Interface:** Simple and intuitive UI for a seamless user experience.
+- **Offline Mode:** Store weather data for up to 24 hours for offline access.
+- **Dark Mode:** Supports system-wide dark theme.
+
+## Upcoming Features
+
+- **7-day Forecast:** View a detailed 7-day weather forecast.
+- **Weather Alerts:** Receive weather alerts for severe conditions.
+- **Widget Support:** Add weather information directly to your home screen.
+- **Localization:** Support for multiple languages.
+
+## Limitations
+
+- **Limited Offline Support:** Currently, the app stores data locally for 24 hours, after which it requires an internet connection for updates.
+- **Single API Dependency:** The app relies on a single weather API (e.g., OpenWeatherMap). If the API is down or rate-limited, data updates may be delayed.
+- **Basic Data Storage:** No advanced cloud syncing or historical data storage implemented yet.
+
+## Screenshots
+
+<!-- Add screenshots or UI previews once available -->
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK: [Install Flutter](https://docs.flutter.dev/get-started/install)
+- Code editor like [VS Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/weather_track.git
+
