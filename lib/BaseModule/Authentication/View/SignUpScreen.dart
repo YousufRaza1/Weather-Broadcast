@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'forget_password_screen.dart';
 import '../ViewModel/AuthViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'reset_password_dialog.dart';

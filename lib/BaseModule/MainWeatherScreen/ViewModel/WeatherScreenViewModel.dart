@@ -5,15 +5,14 @@ import '../Model/CityWeatherModel.dart';
 import 'dart:convert'; // For jsonEncode and jsonDecode
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-
+//
 class WeatherViewModel {
   Future<bool> hasConnection() async {
     return await InternetConnection().hasInternetAccess;
   }
 
   Future<WeatherDetails?> fetchWeather(String cityName) async {
-    const apiKey =
-        '0e467e5c6beceddf2be0be537b297025'; // Replace with your API key
+    const apiKey = '0e467e5c6beceddf2be0be537b297025';
     final url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric');
 
@@ -25,7 +24,6 @@ class WeatherViewModel {
       if (response.statusCode == 200) {
         String jsonString = jsonEncode(response.body);
         addWeatherByCityName(jsonString, cityName);
-
 
         saveListOfSearchedCityName(cityName);
 

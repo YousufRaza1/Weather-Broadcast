@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather_track/BaseModule/Authentication/View/forget_password_screen.dart';
 import '../../MainWeatherScreen/View/WeatherMainScreen.dart';
-
+// import '../../../features/home/presentation/view/weather_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-     WeatherScreen(),
+    WeatherScreen(),
     const ForgetPasswordScreen(),
   ];
 

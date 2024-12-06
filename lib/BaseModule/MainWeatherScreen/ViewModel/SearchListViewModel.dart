@@ -383,7 +383,7 @@ class SearchListViewModel {
         'Willemstad',
         'Windhoek',
         'Wuhan',
-        'Xi\'an',
+        'Xian',
         'Yamoussoukro',
         'Yangon',
         'Yaounde',
